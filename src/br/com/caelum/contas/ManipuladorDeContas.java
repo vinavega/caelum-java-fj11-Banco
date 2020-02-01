@@ -17,7 +17,6 @@ public class ManipuladorDeContas {
         this.conta.setNumero(evento.getInt("numero"));
         this.conta.setTitular(evento.getString("titular"));
         this.conta.setSaldo(0);
-        System.out.println(this.conta.getTipo());
     }
     public void saca(Evento evento){
           double valorDigitado = evento.getDouble("valorOperacao");

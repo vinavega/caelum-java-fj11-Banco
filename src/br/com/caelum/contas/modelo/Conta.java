@@ -18,16 +18,20 @@ public abstract class Conta {
     public void setTitular(String titular) {
         this.titular = titular;
     }
-    public int getNumero(){
+
+    public int getNumero() {
         return numero;
     }
-    public double getSaldo(){
+
+    public double getSaldo() {
         return saldo;
     }
-    public String getAgencia(){
+
+    public String getAgencia() {
         return agencia;
     }
-    public String getTitular(){
+
+    public String getTitular() {
         return titular;
     }
 
@@ -46,17 +50,17 @@ public abstract class Conta {
 
     public abstract String getTipo();
 
-    public void transfere(double valor,Conta conta){
+    public void transfere(double valor, Conta conta) {
         this.saca(valor);
         conta.deposita(valor);
     }
 
     public String recuperaDadosParaImpressao() {
         String dados = "Titular: " + this.titular;
-               dados += "\nNúmero: " + this.numero;
-               dados += "\nAgência: " + this.agencia;
-               dados += "\nSaldo: R$" + this.saldo;
-               dados += "\nTipo: " + this.getTipo();
-               return dados;
+        dados += "\nNúmero: " + this.numero;
+        dados += "\nAgência: " + this.agencia;
+        dados += "\nSaldo: R$" + this.saldo;
+        dados += "\nTipo: " + this.getTipo();
+        return dados;
     }
 }
