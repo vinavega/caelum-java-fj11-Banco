@@ -5,9 +5,12 @@ public class ContaCorrente extends Conta implements Tributavel {
         return "Conta Corrente";
     }
 
-    @Override
     public void saca(double valor) {
-        this.saldo -= (valor + 0.1);
+        if (this.saldo < (valor + 0.1)) {
+            throw new IllegalArgumentException("Saldo Insuficiente");
+        } else {
+            this.saldo -= (valor + 0.1);
+        }
     }
 
     @Override
