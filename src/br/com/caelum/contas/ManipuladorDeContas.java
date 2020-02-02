@@ -19,15 +19,12 @@ public class ManipuladorDeContas {
         this.conta.setNumero(evento.getInt("numero"));
         this.conta.setTitular(evento.getString("titular"));
         this.conta.setSaldo(0);
+        System.out.println(conta);
     }
 
-    public void saca(Evento evento) {
+    public void saca(Evento evento) throws SaldoInsuficienteException {
         double valorDigitado = evento.getDouble("valorOperacao");
-        try {
-            this.conta.saca(valorDigitado);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        this.conta.saca(valorDigitado);
     }
 
     public void deposita(Evento evento) {
@@ -35,7 +32,7 @@ public class ManipuladorDeContas {
         this.conta.deposita(valorDigitado);
     }
 
-    public void transfere(Evento evento) {
+    public void transfere(Evento evento) throws SaldoInsuficienteException {
         Conta destino = (Conta) evento.getSelecionadoNoCombo("destino");
         conta.transfere(evento.getDouble("valorTransferencia"), destino);
     }
