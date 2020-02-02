@@ -16,7 +16,7 @@ public class ManipuladorDeContas {
         this.conta.setAgencia(evento.getString("agencia"));
         this.conta.setNumero(evento.getInt("numero"));
         this.conta.setTitular(evento.getString("titular"));
-        this.conta.setSaldo(0);
+        this.conta.setSaldo(0.00);
     }
     public void saca(Evento evento){
           double valorDigitado = evento.getDouble("valorOperacao");

@@ -1,66 +1,31 @@
 package br.com.caelum.contas.modelo;
 
-public abstract class Conta {
-    protected double saldo;
-    private int numero;
-    private String titular;
-    private String agencia;
+public interface Conta {
 
 
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
+    public void setAgencia(String agencia);
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+    public void setNumero(int numero);
 
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
+    public void setTitular(String titular);
 
-    public int getNumero() {
-        return numero;
-    }
+    public void setSaldo(Double saldo);
 
-    public double getSaldo() {
-        return saldo;
-    }
+    public int getNumero();
 
-    public String getAgencia() {
-        return agencia;
-    }
+    public double getSaldo();
 
-    public String getTitular() {
-        return titular;
-    }
+    public String getAgencia();
 
+    public String getTitular();
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
+    public void saca(double valor);
 
-    public void saca(double valor) {
-        this.saldo -= valor;
-    }
+    public void deposita(double valor);
 
-    public void deposita(double valor) {
-        this.saldo += valor;
-    }
+    public String getTipo();
 
-    public abstract String getTipo();
+    public void transfere(double valor, Conta conta);
 
-    public void transfere(double valor, Conta conta) {
-        this.saca(valor);
-        conta.deposita(valor);
-    }
-
-    public String recuperaDadosParaImpressao() {
-        String dados = "Titular: " + this.titular;
-        dados += "\nNúmero: " + this.numero;
-        dados += "\nAgência: " + this.agencia;
-        dados += "\nSaldo: R$" + this.saldo;
-        dados += "\nTipo: " + this.getTipo();
-        return dados;
-    }
+    public String recuperaDadosParaImpressao();
 }
