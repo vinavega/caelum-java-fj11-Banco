@@ -12,12 +12,17 @@ public class TestaBanco {
         for (int i = 1; i < 7; i++) {
             ContaCorrente conta = new ContaCorrente();
             conta.setTitular("usuario" + i);
-            conta.setNumero(1);
+            conta.setNumero(i);
             conta.setAgencia("100");
             conta.deposita(100000 + i);
             banco.adiciona(conta);
         }
         banco.mostraContas();
+
+
+        System.out.println("qtde contas: "+ banco.pegaQuantidadeDeContas());
+        String nomeUsuario = "usuario4";
+        System.out.println("Busca por nome de "+ nomeUsuario + ": "+banco.buscaPorTitular(nomeUsuario));
     }
 
 }

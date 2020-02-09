@@ -1,14 +1,18 @@
 package br.com.caelum.contas.modelo;
 
+import java.util.*;
+
 public class Banco {
     private String nome;
     private int numero;
-    private Conta[] contas;
+    private Set<Conta>contas;
+    private Map<String, Conta> mapTitular;
 
     public Banco(String nome, int numero) {
         this.nome = nome;
         this.numero = numero;
-        this.contas = new Conta[10];
+        this.contas = new HashSet<>();
+        this.mapTitular = new HashMap<>();
     }
 
     public int getNumero() {
@@ -20,31 +24,37 @@ public class Banco {
     }
 
     public void adiciona(Conta conta) {
-        for (int i = 0; i < this.contas.length; i++) {
-            if (this.contas[i] == null) {
-                this.contas[i] = conta;
-                i = 10;
-            }
-        }
-
+       contas.add(conta);
+       mapTitular.put(conta.getTitular(), conta);
     }
 
     public void mostraContas() {
-        for (int i = 0; i < this.contas.length; i++) {
-            if (this.contas[i] != null) {
-                System.out.println("Conta da posição " + i + ": " + this.contas[i]);
+        for (Conta conta : contas) {
+            if (conta != null) {
+                System.out.println(conta);
             }
 
         }
 
     }
     public boolean contem(Conta conta){
-        for (int i=0; this.contas[i] != null; i++){
-            if (this.contas[i].equals(conta)){
+        for (Conta contaAux : contas){
+            if (contaAux.equals(conta)){
                 System.out.println("Conta encontrada" + conta);
                 return true;
             }
         }
         return false;
     }
+
+    public int pegaQuantidadeDeContas(){
+        return contas.size();
+    }
+
+
+    public Conta buscaPorTitular(String nome){
+        return mapTitular.get(nome);
+
+    }
+
 }

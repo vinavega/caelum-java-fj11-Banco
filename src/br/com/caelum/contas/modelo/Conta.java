@@ -2,7 +2,9 @@ package br.com.caelum.contas.modelo;
 
 import br.com.caelum.contas.SaldoInsuficienteException;
 
-public abstract class Conta implements Comparable<Conta>{
+import java.util.Objects;
+
+public abstract class Conta implements Comparable<Conta> {
     protected double saldo;
     private int numero;
     private String titular;
@@ -73,13 +75,15 @@ public abstract class Conta implements Comparable<Conta>{
         dados += "\nTipo: " + this.getTipo();
         return dados;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return titular.toUpperCase() + " Saldo:  " + saldo;
     }
+
     @Override
-    public boolean equals(Object obj){
-        if(obj == null){
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
         Conta outraConta = (Conta) obj;
@@ -90,5 +94,10 @@ public abstract class Conta implements Comparable<Conta>{
     @Override
     public int compareTo(Conta outraConta) {
         return this.titular.compareTo(outraConta.titular);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero, agencia);
     }
 }
