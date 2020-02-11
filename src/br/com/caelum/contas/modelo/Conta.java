@@ -9,10 +9,15 @@ public abstract class Conta implements Comparable<Conta> {
     private int numero;
     private String titular;
     private String agencia;
+    private String tipo;
 
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setNumero(int numero) {
